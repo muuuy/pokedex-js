@@ -6,11 +6,22 @@
     <title>Pokedex</title>
 </head>
 <body>
-    <p class="test"></p>
-    <img class='test2' src="" />
-    <form method="GET" class="input-form">
-        <input placeholder="Search" id="pokemon-search" type="text" required />
-    </form>
+    <div class="container">
+        <nav class="nav_container">
+            <ul>
+                <li>Home</li>
+                <li>Pokedex</li>
+                <li>About</li>
+            </ul>
+        </nav>
+        <div class="body_container">
+            <p class="pokemon_name"></p>
+            <img class='pokemon_sprite' src="" />
+            <form method="GET" class="input_form">
+                <input placeholder="Search" id="pokemon_search" type="text" required />
+            </form>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
-let tester = document.querySelector('.test');
-let img = document.querySelector('.test2');
+let pokemon_name = document.querySelector('.pokemon_name');
+let img = document.querySelector('.pokemon_sprite');
 
-let pokemonSearch = document.querySelector('#pokemon-search');
-let pokemonForm = document.querySelector('.input-form');
+let pokemonSearch = document.querySelector('#pokemon_search');
+let pokemonForm = document.querySelector('.input_form');
 let curPokemon = 'pikachu';
 
 const fetchPokemon = async () => {
@@ -12,13 +12,14 @@ const fetchPokemon = async () => {
 
         console.log(data);
 
-        tester.textContent = data.name
-        img.src=data.sprites.front_default
+        pokemon_name.textContent = data.name.toUpperCase();
+        img.src = data.sprites.front_default
         
     } catch (error) {
         pokemonSearch.style.border = '2px solid red';
     }
 }
+
 
 pokemonForm.addEventListener('submit', async(e) => {
     e.preventDefault();
