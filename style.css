@@ -1,15 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 :root {
-    --red: #e63946;
-    font-family: 'Oswald', sans-serif;
-
+    --type: #000;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
 }
 
 .container {
@@ -48,7 +47,7 @@
 .pokemon_name {
     font-size: 40px;
     font-weight: 700;
-    animation: fade 3s infinite, slide 6s infinite;;
+    animation: fade 3s infinite, slide 6s infinite;
 }
 
 .pokemon_sprite {
@@ -69,13 +68,17 @@
     font-family: 'Oswald', sans-serif;
 }
 
+.animation {
+    animation: fade 3s infinite, slide 6s infinite;
+}
+
 @keyframes fade {
     0% {
         color: black;
     }
     50% {
         
-        color: var(--red);
+        color: var(--type);
     }
     100% {
         color: black;
@@ -87,13 +90,13 @@
         transform: translateX(0px);
     }
     25% {
-        transform: translateX(-100px);
+        transform: translateX(-100px) rotate(-10deg);
     }
     50% {
         transform: translateX(0px);
     }
     75% {
-        transform: translateX(100px);
+        transform: translateX(100px) rotate(15deg);
     }
     100% {
         transform: translateX(0px);
