@@ -15,14 +15,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
     height: 100vh;
     width: 100%;
 }
 
 .nav_container {
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
     height: 60px;
     background-color: #da0100;
@@ -51,7 +51,6 @@
     list-style: none;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     width: 100%;
 }
 
@@ -68,8 +67,34 @@
     flex-direction: column;
 }
 
+.type_container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.type_container > p {
+    margin-bottom: 4px;
+}
+
+.types {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.pokemon_type {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    width: 60px;
+}
+
 .input_form {
     display: flex;
+    margin-right: 20px;
+    border: none;
+    outline: none;
 }
 
 .pokemon_name {

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <title>Pokedex</title>
 </head>
 <body>
@@ -13,20 +14,24 @@
                 <li class="nav_item">Pokedex</li>
                 <li class="nav_item">About</li>
             </ul>
+            <form method="GET" class="input_form">
+                <input placeholder="Search" id="pokemon_search" type="text" required />
+            </form>
         </nav>
         <div class="sliver"></div>
         <div class="body_container">
             <p class="pokemon_name"></p>
             <img class='pokemon_sprite' src="" />
-            <form method="GET" class="input_form">
-                <input placeholder="Search" id="pokemon_search" type="text" required />
-            </form>
+        </div>
+        <div class="type_container">
+            <p>Type(s)</p>
+            <div class="types"></div>
         </div>
         <div class="moves_container">
             <p id="moves_header">Moves:</p>
             <p id="moves_content"></p>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
