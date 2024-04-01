@@ -12,6 +12,12 @@
     font-family: 'Oswald', sans-serif;
 }
 
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -63,19 +69,20 @@
 .body_container {
     justify-content: center;
     align-items: center;
-    margin: 40px 0;
+    margin: 40px 0 10px 0;
     display: flex;
     flex-direction: column;
+}
+
+.images_container {
+    display: flex;
+    flex-direction: row;
 }
 
 .type_container {
     display: none;
     flex-direction: column;
     align-items: center;
-}
-
-.type_container > p {
-    margin-bottom: 4px;
 }
 
 .types {
@@ -97,6 +104,27 @@
     color: var(--font-type);
 }
 
+.abilities_container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.abilities {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.abilities > a {
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
 .input_form {
     display: flex;
     margin-right: 20px;
@@ -107,17 +135,20 @@
 .pokemon_name {
     font-size: 40px;
     font-weight: 700;
-    animation: fade 3s infinite, slide 6s infinite;
+    animation: fade 3s infinite;
 }
 
 .pokemon_sprite {
     height: auto;
     width: 200px;
-    animation: slide 6s infinite;
+    animation: slideFront 7s infinite;
+}
+
+.back_sprite {
+    animation: slideBack 10s infinite;
 }
 
 #pokemon_search {
-    border: 1px solid black;
     margin-top: 12px;
     outline: none;
     text-align: center;
@@ -139,12 +170,38 @@
     font-weight: 700;
 }
 
+.info_container {
+    display: none;
+    gap: 20px;
+}
+
+.height_container, .weight_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.height, .weight {
+    font-size: 20px;
+}
+
+.moves_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12px;
+}
+
+#moves_content {
+    text-align: center;
+    font-size: 16px;
+}
+
 @keyframes fade {
     0% {
         color: black;
     }
     50% {
-        
         color: var(--type);
     }
     100% {
@@ -152,20 +209,26 @@
     }
 }
 
-@keyframes slide {
+@keyframes slideFront {
     0% {
         transform: translateX(0px);
     }
     25% {
-        transform: translateX(-100px) rotate(-10deg);
-    }
-    50% {
-        transform: translateX(0px);
+        transform: translateX(5px) translateY(-10px);
     }
     75% {
-        transform: translateX(100px) rotate(15deg);
+        transform: translateX(-5px) translateY(10px);
     }
-    100% {
+}
+
+@keyframes slideBack {
+    0% {
         transform: translateX(0px);
+    }
+    25% {
+        transform: translateX(-5px) translateY(10px);
+    }
+    75% {
+        transform: translateX(5px) translateY(-10px);
     }
 }

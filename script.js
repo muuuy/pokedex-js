@@ -1,7 +1,8 @@
 import { types, fontTypes } from './modules/types.js';
 
 let pokemon_name = document.querySelector('.pokemon_name');
-let img = document.querySelector('.pokemon_sprite');
+let imgFront = document.querySelector('.front_sprite');
+let imgBack = document.querySelector('.back_sprite');
 
 let pokemonSearch = document.querySelector('#pokemon_search');
 let pokemonForm = document.querySelector('.input_form');
@@ -10,9 +11,19 @@ let curPokemon = 'pikachu';
 let typeContainer = document.querySelector('.type_container');
 let typeDiv = document.querySelector('.types');
 
-let moveContainer = document.querySelector('.moves_container');
-let movesHeader = document.querySelector('#moves_header');
+let abilitiesContainer = document.querySelector('.abilities_container');
+let abilitiesDiv = document.querySelector('.abilities');
+
+let pokemonInfo = document.querySelector('.info_container');
+let pokemonHeight = document.querySelector('.height');
+let pokemonWeight = document.querySelector('.weight');
+
+let movesContainer = document.querySelector('.moves_container');
 let movesContent = document.querySelector('#moves_content');
+
+let images = [['', ''], ['', '']];
+let currIndex = 0;
+const intervalTime = 15000;
 
 const fetchPokemon = async () => {
     try {
@@ -21,20 +32,39 @@ const fetchPokemon = async () => {
 
         movesContent.textContent = '';
         removeTypes();
-
+        pokemonInfo.style.display = 'flex';
+        movesContainer.style.display = 'flex';
+        
         console.log(data);
 
         pokemon_name.textContent = data.name.toUpperCase();
-        img.src = data.sprites.front_default
+
+        images[0][0] = data.sprites.front_default;
+        images[0][1] = data.sprites.back_default;
+        images[1][0] = data.sprites.front_shiny;
+        images[1][1] = data.sprites.back_shiny;
+
+        imgFront.src = images[0][0];
+        imgBack.src = images[0][1];
 
         checkType(data.types[0].type.name);
         populateTypes(data.types);
         populateMoves(data.moves);
+        populateAbilities(data.abilities);
+        setHeightWeight(data.weight, data.height);
 
     } catch (error) {
         pokemonSearch.style.border = '2px solid red';
     }
 }
+
+const animateImage = () => {
+    currIndex = (currIndex + 1) % images.length;
+
+    imgFront.src = images[currIndex][0]
+    imgBack.src = images[currIndex][1]
+}
+setInterval(animateImage, 10000);
 
 const checkType = (type) => {
     pokemon_name.style.setProperty('--type', types[type])
@@ -69,9 +99,37 @@ const removeTypes = () => {
     }
 }
 
-const populateMoves = (moves) => {
+const populateAbilities = (abilities) => {
+    abilitiesContainer.style.display = 'flex';
+    
+    abilities.map((ability) => {
+        let currAbility = ability.ability.name;
+        currAbility = currAbility.split('-');
 
-    movesHeader.style.display = "block";
+        currAbility = currAbility.map((e) => {
+            return capitalize(e);
+        })
+
+        currAbility = currAbility.join(' ');
+
+        let tempAbility = document.createElement('a');
+        tempAbility.textContent = currAbility;
+        tempAbility.href = ability.ability.url
+
+        abilitiesDiv.appendChild(tempAbility);
+    })
+}
+
+const setHeightWeight = (weight, height) => {
+    
+    weight= (weight * 0.1).toFixed(2);
+    height = (height * 0.1).toFixed(2);
+
+    pokemonWeight.textContent = `${weight} kg`;
+    pokemonHeight.textContent = `${height} m`;
+}
+
+const populateMoves = (moves) => {
 
     moves.map((move, index) => {
 
