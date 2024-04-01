@@ -5,6 +5,10 @@ let pokemonSearch = document.querySelector('#pokemon_search');
 let pokemonForm = document.querySelector('.input_form');
 let curPokemon = 'pikachu';
 
+let moveContainer = document.querySelector('.moves_container');
+let movesHeader = document.querySelector('#moves_header');
+let movesContent = document.querySelector('#moves_content');
+
 const types = {
     fire: '#e63946',
     electric: '#ffbe0b',
@@ -31,11 +35,15 @@ const fetchPokemon = async () => {
         const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${curPokemon}/`);
         const data = await pokemon.json();
 
+        movesContent.textContent = '';
+
         console.log(data);
 
         pokemon_name.textContent = data.name.toUpperCase();
         img.src = data.sprites.front_default
+
         checkType(data.types[0].type.name);
+        populateMoves(data.moves);
 
     } catch (error) {
         pokemonSearch.style.border = '2px solid red';
@@ -43,7 +51,6 @@ const fetchPokemon = async () => {
 }
 
 const checkType = (type) => {
-    console.log(type)
     pokemon_name.style.setProperty('--type', types[type])
 }
 
@@ -52,3 +59,26 @@ pokemonForm.addEventListener('submit', async(e) => {
     curPokemon = pokemonSearch.value.trim().toLowerCase();
     fetchPokemon();
 })
+
+const populateMoves = (moves) => {
+
+    movesHeader.style.display = "block";
+
+    moves.map((move, index) => {
+
+        let currMove = move.move.name;
+        currMove = currMove.split('-');
+
+        currMove = currMove.map((e) => {    
+            return e.charAt(0).toUpperCase() + e.slice(1);
+        })
+        
+        currMove = currMove.join(' ')
+
+        if(index !== moves.length - 1) {
+            movesContent.textContent += `${currMove}, `;
+        } else {
+            movesContent.textContent += `and ${currMove}.`;
+        }
+    })
+}
