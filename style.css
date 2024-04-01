@@ -2,6 +2,7 @@
 
 :root {
     --type: #000;
+    --font-type: #000;
 }
 
 * {
@@ -86,8 +87,14 @@
 .pokemon_type {
     display: flex;
     justify-content: center;
+    align-items: center;
     border: 1px solid black;
-    width: 60px;
+    width: 80px;
+    font-weight: 700;
+    height: 40px;
+    font-size: 20px;
+    background-color: var(--type);
+    color: var(--font-type);
 }
 
 .input_form {

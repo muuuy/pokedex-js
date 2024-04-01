@@ -18,3 +18,24 @@ export const types = {
     fairy: '#ffc6ff',
     dark: '#000000'
 };
+
+export const fontTypes = {
+    fire: 'white',
+    electric: 'white',
+    water: 'white',
+    grass: 'white',
+    ground: 'black',
+    fighting: 'white',
+    ice: 'black',
+    ghost: 'white',
+    psychic: 'black',
+    rock: 'white',
+    poison: 'white',
+    flying: 'white',
+    dragon: 'white',
+    bug: 'black',
+    normal: 'black',
+    steel: '#black',
+    fairy: 'black',
+    dark: 'white'
+}

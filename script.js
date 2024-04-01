@@ -1,4 +1,4 @@
-import { types } from './modules/types.js';
+import { types, fontTypes } from './modules/types.js';
 
 let pokemon_name = document.querySelector('.pokemon_name');
 let img = document.querySelector('.pokemon_sprite');
@@ -46,13 +46,16 @@ pokemonForm.addEventListener('submit', async(e) => {
     fetchPokemon();
 })
 
-const populateTypes = (types) => {    
+const populateTypes = (pokeTypes) => {    
     typeContainer.style.display = 'flex';
     
-    types.map((type) => {
+    pokeTypes.map((type) => {
         let tempType = document.createElement('p');
         tempType.textContent = capitalize(type.type.name);
         tempType.classList.add('pokemon_type');
+        
+        tempType.style.setProperty('--type', types[type.type.name]);
+        tempType.style.setProperty('--font-type', fontTypes[type.type.name]);
 
         typeDiv.appendChild(tempType)
     })
