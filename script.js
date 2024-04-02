@@ -1,5 +1,9 @@
 import { types, fontTypes } from './modules/types.js';
 
+let navHome = document.querySelector('.home');
+let navPokedex = document.querySelector('.pokedex');
+let navAbout = document.querySelector('.about');
+
 let pokemon_name = document.querySelector('.pokemon_name');
 let imgFront = document.querySelector('.front_sprite');
 let imgBack = document.querySelector('.back_sprite');
@@ -26,6 +30,18 @@ let images = [['', ''], ['', '']];
 let currIndex = 0;
 const intervalTime = 15000;
 
+navHome.addEventListener("click", () => {
+    window.location.href='/home.html';
+});
+
+navPokedex.addEventListener("click", () => {
+    window.location.href='/index.html';
+});
+
+navAbout.addEventListener("click", () => {
+    window.location.href = 'about.html';
+});
+
 movesButton.addEventListener('click', () => {
     let displayStyle = window.getComputedStyle(movesContent).getPropertyValue('display');
     
@@ -44,6 +60,7 @@ const fetchPokemon = async () => {
         const data = await pokemon.json();
 
         movesContent.textContent = '';
+        abilitiesDiv.textContent = '';
         removeTypes();
         pokemonInfo.style.display = 'flex';
         movesContainer.style.display = 'flex';
