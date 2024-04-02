@@ -20,10 +20,23 @@ let pokemonWeight = document.querySelector('.weight');
 
 let movesContainer = document.querySelector('.moves_container');
 let movesContent = document.querySelector('#moves_content');
+let movesButton = document.querySelector('.moves_button');
 
 let images = [['', ''], ['', '']];
 let currIndex = 0;
 const intervalTime = 15000;
+
+movesButton.addEventListener('click', () => {
+    let displayStyle = window.getComputedStyle(movesContent).getPropertyValue('display');
+    
+    if(displayStyle == 'none') {
+        movesContent.style.display = 'flex';
+        movesButton.textContent = 'Hide Moves';
+    } else {
+        movesContent.style.display = 'None';
+        movesButton.textContent = 'Show Moves';
+    }
+});
 
 const fetchPokemon = async () => {
     try {
