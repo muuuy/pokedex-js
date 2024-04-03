@@ -19,6 +19,13 @@
             </form>
         </nav>
         <div class="sliver"></div>
+        <!-- <div class="intro">
+            <h1>Welcome to your Pokédex!</h1>
+            <p>Whether you're a seasoned Pokemon Trainer or just starting your journey, our 
+               platform is your ultimate destination to explore the vast world of Pokemon. 
+               With our intuitive search functionality, you can effortlessly discover detailed 
+               information about any Pokemon you desire.</p>
+        </div> -->
         <div class="body_container">
             <p class="pokemon_name"></p>
             <div class="images_container">
@@ -35,13 +42,39 @@
             <div class="abilities"></div>
         </div>
         <div class="info_container">
-            <div class="height_container">
+            <div class="height_container stat">
                 <h1>Height</h1>
                 <p class="height"></p>
             </div>
-            <div class="weight_container">
+            <div class="weight_container stat">
                 <h1>Weight</h1>
                 <p class="weight"></p>
+            </div>
+        </div>
+        <div class="stats_container">
+            <div class="hp">
+                <p class="input_hp"></p>
+                <p>HP</p>
+            </div>
+            <div class="attack">
+                <p class="input_attack"></p>
+                <p>Atk</p>
+            </div>
+            <div class="defense">
+                <p class="input_defense"></p>
+                <p>Def</p>
+            </div>
+            <div class="special_attack">
+                <p class="input_sattack"></p>
+                <p>Sp. Atk</p>
+            </div>
+            <div class="special_defense">
+                <p class="input_sdefense"></p>
+                <p>Sp. Def</p>
+            </div>
+            <div class="speed">
+                <p class="input_speed"></p>
+                <p>Speed</p>
             </div>
         </div>
         <div class="moves_container">
@@ -51,13 +84,12 @@
                     <tr>
                         <th>Name</th>
                         <th>Type</th>
+                        <th>Damage Type</th>
+                        <th>Power</th>
+                        <th>PP</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
                 </tbody>
             </table>
         </div>

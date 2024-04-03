@@ -25,8 +25,15 @@ let pokemonWeight = document.querySelector('.weight');
 
 let movesContainer = document.querySelector('.moves_container');
 let movesButton = document.querySelector('.moves_button');
-
 let movesTable = document.querySelector('.moves_table');
+
+let statsContainer = document.querySelector('.stats_container');
+let statsHp = document.querySelector('.input_hp');
+let statsAttack = document.querySelector('.input_attack');
+let statsDefense = document.querySelector('.input_defense');
+let statsSAttack = document.querySelector('.input_sattack');
+let statsSDefense = document.querySelector('.input_sdefense');
+let statsSpeed = document.querySelector('.input_speed');
 
 let images = [['', ''], ['', '']];
 let currIndex = 0;
@@ -65,6 +72,7 @@ const fetchPokemon = async () => {
         removeTypes();
         pokemonInfo.style.display = 'flex';
         movesContainer.style.display = 'flex';
+        statsContainer.style.display = 'grid';
         
         console.log(data);
 
@@ -83,12 +91,22 @@ const fetchPokemon = async () => {
         populateMoves(data.moves);
         populateAbilities(data.abilities);
         setHeightWeight(data.weight, data.height);
+        populateStats(data.stats)
 
         // fetchMoves(data.moves[0].move.url, movesTable.getElementsByTagName('tbody')[0]);
 
     } catch (error) {
         pokemonSearch.style.border = '2px solid red';
     }
+}
+
+const populateStats = (stats) => {
+    statsHp.textContent = stats[0].base_stat;
+    statsAttack.textContent = stats[1].base_stat;
+    statsDefense.textContent = stats[2].base_stat;
+    statsSAttack.textContent = stats[3].base_stat;
+    statsSDefense.textContent = stats[4].base_stat;
+    statsSpeed.textContent = stats[5].base_stat;
 }
 
 const animateImage = () => {

@@ -39,3 +39,9 @@ export const fontTypes = {
     fairy: 'black',
     dark: 'white'
 }
+
+export const status = {
+    physical: '#fcf6bd',
+    status: '#d0f4de',
+    special: '#a9def9'
+}

@@ -177,6 +177,7 @@ table, th, tr, td {
 
 .info_container {
     display: none;
+    margin-bottom: 20px;
     gap: 20px;
 }
 
@@ -218,8 +219,50 @@ table, th, tr, td {
 .moves_table {
     display: none;
     flex-direction: column;
-    width: 300px;
+    width: 750px;
     font-weight: 700;
+}
+
+.stats_container {
+    display: none;
+    grid-template-columns: repeat(3, 3fr);
+    width: 240px;
+    text-align: center;
+}
+
+.stats_container > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 6px;
+    height: 70px;
+    border: 1px solid black;
+    border-radius: 12px;
+}
+
+.hp {
+    background-color: #ffadad;
+}
+
+.attack {
+    background-color: #ffd6a5;
+}
+
+.defense {
+    background-color: #fdffb6;
+}
+
+.special_attack {
+    background-color: #9bf6ff;
+}
+
+.special_defense {
+    background-color: #bdb2ff;
+}
+
+.speed {
+    background-color: #ffc6ff;
 }
 
 td, th {
