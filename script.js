@@ -1,4 +1,5 @@
 import { types, fontTypes } from './modules/types.js';
+import { fetchMoves } from './modules/moves.js';
 
 let navHome = document.querySelector('.home');
 let navPokedex = document.querySelector('.pokedex');
@@ -23,8 +24,9 @@ let pokemonHeight = document.querySelector('.height');
 let pokemonWeight = document.querySelector('.weight');
 
 let movesContainer = document.querySelector('.moves_container');
-let movesContent = document.querySelector('#moves_content');
 let movesButton = document.querySelector('.moves_button');
+
+let movesTable = document.querySelector('.moves_table');
 
 let images = [['', ''], ['', '']];
 let currIndex = 0;
@@ -43,13 +45,13 @@ navAbout.addEventListener("click", () => {
 });
 
 movesButton.addEventListener('click', () => {
-    let displayStyle = window.getComputedStyle(movesContent).getPropertyValue('display');
+    let displayStyle = window.getComputedStyle(movesTable).getPropertyValue('display');
     
     if(displayStyle == 'none') {
-        movesContent.style.display = 'flex';
+        movesTable.style.display = 'flex';
         movesButton.textContent = 'Hide Moves';
     } else {
-        movesContent.style.display = 'None';
+        movesTable.style.display = 'None';
         movesButton.textContent = 'Show Moves';
     }
 });
@@ -59,7 +61,6 @@ const fetchPokemon = async () => {
         const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${curPokemon}/`);
         const data = await pokemon.json();
 
-        movesContent.textContent = '';
         abilitiesDiv.textContent = '';
         removeTypes();
         pokemonInfo.style.display = 'flex';
@@ -82,6 +83,8 @@ const fetchPokemon = async () => {
         populateMoves(data.moves);
         populateAbilities(data.abilities);
         setHeightWeight(data.weight, data.height);
+
+        // fetchMoves(data.moves[0].move.url, movesTable.getElementsByTagName('tbody')[0]);
 
     } catch (error) {
         pokemonSearch.style.border = '2px solid red';
@@ -172,14 +175,10 @@ const populateMoves = (moves) => {
         
         currMove = currMove.join(' ')
 
-        if(index !== moves.length - 1) {
-            movesContent.textContent += `${currMove}, `;
-        } else {
-            movesContent.textContent += `and ${currMove}.`;
-        }
+        fetchMoves(currMove, move.move.url, movesTable.getElementsByTagName('tbody')[0]);
     })
 }
 
-const capitalize = (word) => {
+export const capitalize = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
 }

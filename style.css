@@ -18,6 +18,11 @@ h1 {
     margin-bottom: 4px;
 }
 
+table, th, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -210,10 +215,21 @@ h1 {
     transition: transform 1s ease;
 }
 
-#moves_content {
+.moves_table {
     display: none;
+    flex-direction: column;
+    width: 300px;
+    font-weight: 700;
+}
+
+td, th {
+    width: 150px;
     text-align: center;
-    font-size: 16px;
+}
+
+th {
+    background-color: #da0100;
+    color: white;
 }
 
 @keyframes fade {
