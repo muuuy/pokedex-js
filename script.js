@@ -1,6 +1,9 @@
 import { types, fontTypes } from './modules/types.js';
 import { fetchMoves } from './modules/moves.js';
 
+let container = document.querySelector('.container');
+let intro = document.querySelector('.intro');
+
 let navHome = document.querySelector('.home');
 let navPokedex = document.querySelector('.pokedex');
 let navAbout = document.querySelector('.about');
@@ -73,6 +76,8 @@ const fetchPokemon = async () => {
         pokemonInfo.style.display = 'flex';
         movesContainer.style.display = 'flex';
         statsContainer.style.display = 'grid';
+        container.style.backgroundImage = 'none';
+        intro.style.display = 'none';
         
         console.log(data);
 
