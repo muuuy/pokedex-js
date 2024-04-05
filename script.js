@@ -51,7 +51,7 @@ navPokedex.addEventListener("click", () => {
 });
 
 navAbout.addEventListener("click", () => {
-    window.location.href = 'about.html';
+    window.location.href = '/about.html';
 });
 
 movesButton.addEventListener('click', () => {
