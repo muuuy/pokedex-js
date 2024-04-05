@@ -7,6 +7,7 @@ let intro = document.querySelector('.intro');
 let navHome = document.querySelector('.home');
 let navPokedex = document.querySelector('.pokedex');
 let navAbout = document.querySelector('.about');
+let navBerries = document.querySelector('.berries');
 
 let pokemon_name = document.querySelector('.pokemon_name');
 let imgFront = document.querySelector('.front_sprite');
@@ -53,6 +54,10 @@ navPokedex.addEventListener("click", () => {
 navAbout.addEventListener("click", () => {
     window.location.href = '/about.html';
 });
+
+navBerries.addEventListener("click", () => {
+    window.location.href = '/berries.html'
+})
 
 movesButton.addEventListener('click', () => {
     let displayStyle = window.getComputedStyle(movesTable).getPropertyValue('display');
